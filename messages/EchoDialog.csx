@@ -42,7 +42,7 @@ public class EchoDialog : IDialog<object>
         else if (message.Text == "time")
         {
             DateTime time = DateTime.Now;
-            await context.PostAsync($"{time.Hour+9}:{time.Minute}");
+            await context.PostAsync($"{time.Hour}:{time.Minute}");
             context.Wait(MessageReceivedAsync);
         }
         else
