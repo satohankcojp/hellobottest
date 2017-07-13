@@ -39,6 +39,11 @@ public class EchoDialog : IDialog<object>
                 "Didn't get that!",
                 promptStyle: PromptStyle.Auto);
         }
+        else if (message.Test == "time")
+        {
+            DateTime time = DateTime.Now;
+            await context.PostAsync($"{time.Hour}:{time.Minute}");
+        }
         else
         {
             await context.PostAsync($"{this.count++}: You said {message.Text}");
