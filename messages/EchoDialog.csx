@@ -43,6 +43,7 @@ public class EchoDialog : IDialog<object>
         {
             DateTime time = DateTime.Now;
             await context.PostAsync($"{time.Hour}:{time.Minute}");
+            context.Wait(MessageReceivedAsync);
         }
         else
         {
