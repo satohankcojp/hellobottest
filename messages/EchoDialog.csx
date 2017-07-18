@@ -52,11 +52,11 @@ public class EchoDialog : IDialog<object>
         }
         else if (Regex.IsMatch(message.Text, @"\d\d\d\d\d\d\d"))
         {
-            /*try
+            try
             {
                 HttpClient client = new HttpClient();
                 var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
-                if (result)
+                /*if (result)
                 {
                     var address = JsonConvert.DeserializeObject<Address>(await result.Content.ReadAsStringAsync());
                     await context.PostAsync(address.address1);
@@ -66,13 +66,13 @@ public class EchoDialog : IDialog<object>
                     await context.PostAsync("ADDRESS ERROR");
                 }
 
-                context.Wait(MessageReceivedAsync);
+                context.Wait(MessageReceivedAsync);*/
             }
             catch (e)
             {
                 await context.PostAsync($"ADDRESS ERROR");
                 context.Wait(MessageReceivedAsync);
-            }*/
+            }
 
         }
         else
