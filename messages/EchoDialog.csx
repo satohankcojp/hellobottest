@@ -1,7 +1,12 @@
 using System;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+
+using System.Net;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 // For more information about this template visit http://aka.ms/azurebots-csharp-basic
 [Serializable]
@@ -42,8 +47,15 @@ public class EchoDialog : IDialog<object>
         else if (message.Text == "time")
         {
             DateTime time = DateTime.Now;
-            await context.PostAsync($"{time.Hour+9}:{time.Minute}");
+            await context.PostAsync($"{time.Hour + 9}:{time.Minute}");
             context.Wait(MessageReceivedAsync);
+        }
+        else if (Regex.IsMatch(message.Text, @"\d\d\d\d\d\d\d"))
+        {
+            HttpClient client = new HttpClient();
+            var result = await client.GetAsync("http://zipcloud.ibsnet.co.jp/api/search?zipcode="+ message.Text);
+
+
         }
         else
         {
