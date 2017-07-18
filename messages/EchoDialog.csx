@@ -53,7 +53,7 @@ public class EchoDialog : IDialog<object>
         else if (Regex.IsMatch(message.Text, @"\d\d\d\d\d\d\d"))
         {
 
-            //HttpClient client = new HttpClient();
+            HttpClient client = new HttpClient();
             //var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
             /*if (result)
             {
