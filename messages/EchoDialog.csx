@@ -70,7 +70,7 @@ public class EchoDialog : IDialog<object>
             }
             catch (e)
             {
-                await context.PostAsync(e);
+                await context.PostAsync($"ADDRESS ERROR");
                 context.Wait(MessageReceivedAsync);
             }
 
