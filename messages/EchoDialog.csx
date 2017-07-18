@@ -55,7 +55,7 @@ public class EchoDialog : IDialog<object>
 
             HttpClient client = new HttpClient();
             var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
-            if (result)
+            if (result.IsSuccessStatusCode)
             {
                 //var address = JsonConvert.DeserializeObject<Address>(await result.Content.ReadAsStringAsync());
                 //await context.PostAsync(address.address1);
