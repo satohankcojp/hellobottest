@@ -55,7 +55,7 @@ public class EchoDialog : IDialog<object>
             try
             {
                 HttpClient client = new HttpClient();
-                var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
+                //var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
                 /*if (result)
                 {
                     var address = JsonConvert.DeserializeObject<Address>(await result.Content.ReadAsStringAsync());
@@ -70,8 +70,8 @@ public class EchoDialog : IDialog<object>
             }
             catch (e)
             {
-                await context.PostAsync($"ADDRESS ERROR");
-                context.Wait(MessageReceivedAsync);
+                //await context.PostAsync($"ADDRESS ERROR");
+                //context.Wait(MessageReceivedAsync);
             }
 
         }
