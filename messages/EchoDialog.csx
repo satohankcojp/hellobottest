@@ -54,7 +54,7 @@ public class EchoDialog : IDialog<object>
         {
             try
             {
-                HttpClient client = new HttpClient();
+                //HttpClient client = new HttpClient();
                 //var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
                 /*if (result)
                 {
