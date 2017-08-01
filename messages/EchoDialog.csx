@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+
 using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
@@ -93,13 +96,13 @@ public class EchoDialog : IDialog<object>
         context.Wait(MessageReceivedAsync);
     }
 
-    [DataContract]
-    public class Address
-    {
-        public string zipcode { get; set; }
-        public string address1 { get; set; }
-        public string address2 { get; set; }
-        public string address3 { get; set; }
-    }
+}
 
+[DataContract]
+public class Address
+{
+    public string zipcode { get; set; }
+    public string address1 { get; set; }
+    public string address2 { get; set; }
+    public string address3 { get; set; }
 }
