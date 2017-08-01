@@ -71,8 +71,8 @@ public class EchoDialog : IDialog<object>
 
                     await context.PostAsync($"{add.address1}{add.address2}{add.address3}");
                 }*/
-                //var data = JsonConvert.DeserializeObject<Address>(result);
-                await context.PostAsync(result);
+                var data = JsonConvert.DeserializeObject<Address>(result);
+                //await context.PostAsync(data);
             }
 
             context.Wait(MessageReceivedAsync);
