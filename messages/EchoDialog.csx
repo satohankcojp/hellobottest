@@ -3,9 +3,12 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Text;
 
 using System.Net;
 using System.Net.Http;
