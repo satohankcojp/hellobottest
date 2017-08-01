@@ -70,7 +70,7 @@ public class EchoDialog : IDialog<object>
                 client.BaseAddress = new Uri("http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
                 var result = await client.GetAsync("");
                 string resultContent = await result.Content.ReadAsStringAsync();
-                await context.PostAsync($"Post Code Search!");
+                await context.PostAsync(resultContent);
             }
 
             /*string jsonres = new HttpClient().GetStringAsync(url).Result;
