@@ -63,7 +63,7 @@ public class EchoDialog : IDialog<object>
             {
                 client.BaseAddress = new Uri($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
                 var result = await client.GetAsync("");
-                var serializer = new DataContractJsonSerializer(typeof(Address));
+                //var serializer = new DataContractJsonSerializer(typeof(Address));
 
                 /*using (var data = new MemoryStream(Encoding.UTF8.GetBytes(result)))
                 {
@@ -71,8 +71,8 @@ public class EchoDialog : IDialog<object>
 
                     await context.PostAsync($"{add.address1}{add.address2}{add.address3}");
                 }*/
-                var data = JsonConvert.DeserializeObject<Address>(result);
-                await context.PostAsync($"{data}");
+                //var data = JsonConvert.DeserializeObject<Address>(result);
+                await context.PostAsync(result);
             }
 
             context.Wait(MessageReceivedAsync);
