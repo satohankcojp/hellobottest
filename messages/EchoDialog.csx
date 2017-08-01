@@ -65,13 +65,14 @@ public class EchoDialog : IDialog<object>
                 var result = await client.GetAsync("");
                 var serializer = new DataContractJsonSerializer(typeof(Address));
 
-                //using (var data = new MemoryStream(Encoding.UTF8.GetBytes(result)))
-                using (var data = JsonConvert.DeserializeObject<Address>(result))
+                /*using (var data = new MemoryStream(Encoding.UTF8.GetBytes(result)))
                 {
                     var add = (Address)serializer.ReadObject(data);
 
                     await context.PostAsync($"{add.address1}{add.address2}{add.address3}");
-                }
+                }*/
+                var data = JsonConvert.DeserializeObject<Address>(result);
+                await context.PostAsync($"{data}");
             }
 
             context.Wait(MessageReceivedAsync);
