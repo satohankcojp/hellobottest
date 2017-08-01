@@ -65,8 +65,14 @@ public class EchoDialog : IDialog<object>
                 //await context.PostAsync("ADDRESS ERROR");
             }*/
 
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
+                var result = await client.GetAsync("");
+                string resultContent = await result.Content.ReadAsStringAsync();
 
-            var url = $"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}";
+            }
+
             /*string jsonres = new HttpClient().GetStringAsync(url).Result;
             var resdata = JsonConvert.DeserializeObject<string>(jsonres);*/
 
