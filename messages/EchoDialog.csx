@@ -53,7 +53,7 @@ public class EchoDialog : IDialog<object>
         else if (Regex.IsMatch(message.Text, @"\d\d\d\d\d\d\d"))
         {
 
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             //var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
             /*if (result.IsSuccessStatusCode)
             {
@@ -67,8 +67,8 @@ public class EchoDialog : IDialog<object>
 
 
             var url = $"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}";
-            string jsonres = new HttpClient().GetStringAsync(url).Result;
-            var activity = JsonConvert.DeserializeObject<string>(jsonres);
+            /*string jsonres = new HttpClient().GetStringAsync(url).Result;
+            var resdata = JsonConvert.DeserializeObject<string>(jsonres);*/
 
             await context.PostAsync($"Post Code Search!");
 
