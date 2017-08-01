@@ -65,7 +65,7 @@ public class EchoDialog : IDialog<object>
                 //await context.PostAsync("ADDRESS ERROR");
             }*/
 
-            await context.PostAsync($"óXï÷î‘çÜåüçı");
+            await context.PostAsync($"Post Code Search!");
             context.Wait(MessageReceivedAsync);
 
         }
