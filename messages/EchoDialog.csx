@@ -53,30 +53,20 @@ public class EchoDialog : IDialog<object>
         else if (Regex.IsMatch(message.Text, @"\d\d\d\d\d\d\d"))
         {
 
-            //HttpClient client = new HttpClient();
-            //var result = await client.GetAsync($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
-            /*if (result.IsSuccessStatusCode)
-            {
-                //var address = JsonConvert.DeserializeObject<Address>(await result.Content.ReadAsStringAsync());
-                //await context.PostAsync(address.address1);
-            }
-            else
-            {
-                //await context.PostAsync("ADDRESS ERROR");
-            }*/
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
                 var result = await client.GetAsync("");
-                string resultContent = await result.Content.ReadAsStringAsync();
-                await context.PostAsync(resultContent);
+                var serializer = new DataContractJsonSerializer(typeof(Address));
+
+                using (var data = new MemoryStream(Encoding.UTF8.GetBytes(result)))
+                {
+                    var add = (Address)serializer.ReadObject(data);
+                    
+                    await context.PostAsync($"{add.address1}{add.address2}{add.address3}");
+                }
+                    //await context.PostAsync(resultContent);
             }
-
-            /*string jsonres = new HttpClient().GetStringAsync(url).Result;
-            var resdata = JsonConvert.DeserializeObject<string>(jsonres);*/
-
-            await context.PostAsync($"Not HttpClient");
 
             context.Wait(MessageReceivedAsync);
 
@@ -102,10 +92,14 @@ public class EchoDialog : IDialog<object>
         }
         context.Wait(MessageReceivedAsync);
     }
+
+    [DataContract]
     public class Address
     {
         public string zipcode { get; set; }
         public string address1 { get; set; }
+        public string address2 { get; set; }
+        public string address3 { get; set; }
     }
 
 }
