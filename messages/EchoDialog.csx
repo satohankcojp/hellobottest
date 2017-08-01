@@ -67,7 +67,7 @@ public class EchoDialog : IDialog<object>
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
+                client.BaseAddress = new Uri($"http://zipcloud.ibsnet.co.jp/api/search?zipcode={message.Text}");
                 var result = await client.GetAsync("");
                 string resultContent = await result.Content.ReadAsStringAsync();
                 await context.PostAsync(resultContent);
